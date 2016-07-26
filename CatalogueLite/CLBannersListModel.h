@@ -13,10 +13,12 @@
 @interface CLBannersListModel : JSONModel
 
 @property (assign, nonatomic) intptr_t count;
-@property (assign, nonatomic) intptr_t totl_count;
+@property (assign, nonatomic) intptr_t total_count;
 @property (assign, nonatomic) intptr_t current_page;
 @property (assign, nonatomic) intptr_t per_page;
 @property (assign, nonatomic) intptr_t pages;
-@property (strong, nonatomic) NSArray<CLBannerModel> *banners;
+@property (strong, nonatomic) NSMutableArray<CLBannerModel> *banners;
+
+- (void)removeInactiveBannersFromList;
 
 @end

@@ -30,18 +30,15 @@
     return self;
 }
 
-- (NSData *)getDataForKey:(NSURL *)keyURL
+- (NSData *)getDataForKey:(NSString *)keyString
 {
-    NSError *error;
-    NSString *keyString = [NSString stringWithContentsOfURL:keyURL usedEncoding:nil error:&error];
     return [_cache objectForKey:keyString];
 }
 
-- (void)storeData:(NSData *)data forKey:(NSURL *)keyURL
+- (void)storeData:(NSData *)data forKey:(NSString *)keyString
 {
-    NSError *error;
-    NSString *keyString = [NSString stringWithContentsOfURL:keyURL usedEncoding:nil error:&error];
     NSData *cachedData = [_cache objectForKey:keyString];
+    
     if (cachedData)
     {
         [_cache removeObjectForKey:keyString];

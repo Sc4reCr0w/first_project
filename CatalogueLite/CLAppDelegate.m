@@ -19,20 +19,25 @@
 
 @implementation CLAppDelegate
 
+#pragma Mark - Private methods
+
 - (void)completeUserInterface
 {
     CLLoadScreenViewController *loadScreenController = [[CLLoadScreenViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loadScreenController];
-       
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self window].rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
 }
 
+#pragma Mark - Delegate methods
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     [self completeUserInterface];
     
     return YES;

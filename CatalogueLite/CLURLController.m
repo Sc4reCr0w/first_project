@@ -13,9 +13,9 @@
 - (NSURL *)makeURLForKey:(NSString *)key relativeToBaseURL:(NSURL *)baseURL
 {
     NSString *URLTailString = [[self validURLTail] objectForKey:key];
-    NSString *string = [[baseURL absoluteString] stringByAppendingString:URLTailString];
+    NSURL *result = [NSURL URLWithString:URLTailString relativeToURL:baseURL];
     
-    return [NSURL URLWithString:string];
+    return result;
 }
 
 - (NSURL *)addQueryParametersToURL:(NSURL *)URL fromDictionary:(NSDictionary *)dictionary
@@ -40,7 +40,7 @@
 
 - (NSDictionary *)validURLTail
 {
-    return @{@"LOAD_BANNERS":@"/api/banners",
+    return @{@"LOAD_BANNERS":@"api/banners",
              @"LOAD_INFO_PAGE":@"/api/infopage",
              @"LOAD_TAXON":@"/api/taxonss",
              @"LOAD_BASE_INFO":@"/api/base-info",

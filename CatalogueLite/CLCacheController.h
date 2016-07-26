@@ -12,7 +12,7 @@
 
 - (instancetype)init;
 
-- (NSData *)getDataForKey:(NSURL *)keyURL;
-- (void)storeData:(NSData *)data forKey:(NSURL *)keyURL;
+- (NSData *)getDataForKey:(NSString *)keyString;
+- (void)storeData:(NSData *)data forKey:(NSString *)keyString;
 
 @end

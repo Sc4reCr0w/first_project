@@ -26,6 +26,8 @@
 		E95C90761D3A5FA300A39A29 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95C90751D3A5FA300A39A29 /* SystemConfiguration.framework */; };
 		E95C90811D3B862300A39A29 /* CLBannersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C90801D3B862300A39A29 /* CLBannersListModel.m */; };
 		E95C90841D3B866300A39A29 /* CLBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C90831D3B866300A39A29 /* CLBannerModel.m */; };
+		E967C07C1D463A45001D5D6E /* CLHTTPController.m in Sources */ = {isa = PBXBuildFile; fileRef = E967C07B1D463A45001D5D6E /* CLHTTPController.m */; };
+		E967C07F1D464EE9001D5D6E /* CLJSONController.m in Sources */ = {isa = PBXBuildFile; fileRef = E967C07E1D464EE9001D5D6E /* CLJSONController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		E95C90801D3B862300A39A29 /* CLBannersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBannersListModel.m; sourceTree = "<group>"; };
 		E95C90821D3B866300A39A29 /* CLBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBannerModel.h; sourceTree = "<group>"; };
 		E95C90831D3B866300A39A29 /* CLBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBannerModel.m; sourceTree = "<group>"; };
+		E967C07A1D463A45001D5D6E /* CLHTTPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHTTPController.h; sourceTree = "<group>"; };
+		E967C07B1D463A45001D5D6E /* CLHTTPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHTTPController.m; sourceTree = "<group>"; };
+		E967C07D1D464EE9001D5D6E /* CLJSONController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLJSONController.h; sourceTree = "<group>"; };
+		E967C07E1D464EE9001D5D6E /* CLJSONController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLJSONController.m; sourceTree = "<group>"; };
 		F31C99E0BFE8E81DEE72EA04 /* Pods-CatalogueLiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatalogueLiteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatalogueLiteTests/Pods-CatalogueLiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +188,10 @@
 				E94975691D38DA4400522DFB /* CLCacheController.m */,
 				E949756B1D38FC5200522DFB /* CLURLController.h */,
 				E949756C1D38FC5200522DFB /* CLURLController.m */,
+				E967C07A1D463A45001D5D6E /* CLHTTPController.h */,
+				E967C07B1D463A45001D5D6E /* CLHTTPController.m */,
+				E967C07D1D464EE9001D5D6E /* CLJSONController.h */,
+				E967C07E1D464EE9001D5D6E /* CLJSONController.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -518,8 +528,10 @@
 				E95C90811D3B862300A39A29 /* CLBannersListModel.m in Sources */,
 				E9387F811D2927FC00DACE07 /* main.m in Sources */,
 				E91192651D335EDE00D0C131 /* CLLoadScreenViewController.m in Sources */,
+				E967C07F1D464EE9001D5D6E /* CLJSONController.m in Sources */,
 				E949756D1D38FC5200522DFB /* CLURLController.m in Sources */,
 				E94975641D38D1C100522DFB /* CLLibraryAPI.m in Sources */,
+				E967C07C1D463A45001D5D6E /* CLHTTPController.m in Sources */,
 				E95C90841D3B866300A39A29 /* CLBannerModel.m in Sources */,
 				E949756A1D38DA4400522DFB /* CLCacheController.m in Sources */,
 			);
