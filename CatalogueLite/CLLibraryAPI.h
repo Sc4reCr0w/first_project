@@ -8,12 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class CLConfiguration;
+
+@protocol CLLibraryAPIConfiguration;
+
 @interface CLLibraryAPI : NSObject
 
-@property (strong, nonatomic) NSURL *serverAddress;
+@property (weak, nonatomic) id<CLLibraryAPIConfiguration> delegate;
 
 + (instancetype)sharedInstance;
 
-- (void)downloadBannersList;
+- (void)downloadToCacheJSONObjectForAPICallKey:(NSString *)callKey;
+
+@end
+
+@protocol CLLibraryAPIConfiguration <NSObject>
+@required
+- (CLConfiguration *)configurationForCLLibraryAPI;
 
 @end

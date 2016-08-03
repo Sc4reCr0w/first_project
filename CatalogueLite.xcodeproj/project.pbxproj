@@ -23,6 +23,13 @@
 		E94975641D38D1C100522DFB /* CLLibraryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E94975631D38D1C100522DFB /* CLLibraryAPI.m */; };
 		E949756A1D38DA4400522DFB /* CLCacheController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94975691D38DA4400522DFB /* CLCacheController.m */; };
 		E949756D1D38FC5200522DFB /* CLURLController.m in Sources */ = {isa = PBXBuildFile; fileRef = E949756C1D38FC5200522DFB /* CLURLController.m */; };
+		E94C24BA1D5120AE00369851 /* CLConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C24B91D5120AE00369851 /* CLConfiguration.m */; };
+		E95C1AA81D4A4088006F1919 /* CLInfoPagesList.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AA71D4A4088006F1919 /* CLInfoPagesList.m */; };
+		E95C1AAB1D4A4178006F1919 /* CLInfoPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AAA1D4A4178006F1919 /* CLInfoPage.m */; };
+		E95C1AAE1D4A4520006F1919 /* CLBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AAD1D4A4520006F1919 /* CLBaseInfo.m */; };
+		E95C1AB11D4A4974006F1919 /* CLTaxonsList.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AB01D4A4974006F1919 /* CLTaxonsList.m */; };
+		E95C1AB41D4A49AB006F1919 /* CLTaxon.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AB31D4A49AB006F1919 /* CLTaxon.m */; };
+		E95C1AB71D4A4A8B006F1919 /* CLTaxonIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C1AB61D4A4A8B006F1919 /* CLTaxonIcon.m */; };
 		E95C90761D3A5FA300A39A29 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95C90751D3A5FA300A39A29 /* SystemConfiguration.framework */; };
 		E95C90811D3B862300A39A29 /* CLBannersListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C90801D3B862300A39A29 /* CLBannersListModel.m */; };
 		E95C90841D3B866300A39A29 /* CLBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E95C90831D3B866300A39A29 /* CLBannerModel.m */; };
@@ -82,6 +89,20 @@
 		E94975691D38DA4400522DFB /* CLCacheController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCacheController.m; sourceTree = "<group>"; };
 		E949756B1D38FC5200522DFB /* CLURLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLURLController.h; sourceTree = "<group>"; };
 		E949756C1D38FC5200522DFB /* CLURLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLURLController.m; sourceTree = "<group>"; };
+		E94C24B81D5120AE00369851 /* CLConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLConfiguration.h; sourceTree = "<group>"; };
+		E94C24B91D5120AE00369851 /* CLConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLConfiguration.m; sourceTree = "<group>"; };
+		E95C1AA61D4A4088006F1919 /* CLInfoPagesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInfoPagesList.h; sourceTree = "<group>"; };
+		E95C1AA71D4A4088006F1919 /* CLInfoPagesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInfoPagesList.m; sourceTree = "<group>"; };
+		E95C1AA91D4A4178006F1919 /* CLInfoPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInfoPage.h; sourceTree = "<group>"; };
+		E95C1AAA1D4A4178006F1919 /* CLInfoPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInfoPage.m; sourceTree = "<group>"; };
+		E95C1AAC1D4A4520006F1919 /* CLBaseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBaseInfo.h; sourceTree = "<group>"; };
+		E95C1AAD1D4A4520006F1919 /* CLBaseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBaseInfo.m; sourceTree = "<group>"; };
+		E95C1AAF1D4A4974006F1919 /* CLTaxonsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTaxonsList.h; sourceTree = "<group>"; };
+		E95C1AB01D4A4974006F1919 /* CLTaxonsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTaxonsList.m; sourceTree = "<group>"; };
+		E95C1AB21D4A49AB006F1919 /* CLTaxon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTaxon.h; sourceTree = "<group>"; };
+		E95C1AB31D4A49AB006F1919 /* CLTaxon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTaxon.m; sourceTree = "<group>"; };
+		E95C1AB51D4A4A8B006F1919 /* CLTaxonIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTaxonIcon.h; sourceTree = "<group>"; };
+		E95C1AB61D4A4A8B006F1919 /* CLTaxonIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTaxonIcon.m; sourceTree = "<group>"; };
 		E95C90751D3A5FA300A39A29 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E95C907F1D3B862300A39A29 /* CLBannersListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBannersListModel.h; sourceTree = "<group>"; };
 		E95C90801D3B862300A39A29 /* CLBannersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBannersListModel.m; sourceTree = "<group>"; };
@@ -164,6 +185,20 @@
 				E95C90801D3B862300A39A29 /* CLBannersListModel.m */,
 				E95C90821D3B866300A39A29 /* CLBannerModel.h */,
 				E95C90831D3B866300A39A29 /* CLBannerModel.m */,
+				E95C1AAC1D4A4520006F1919 /* CLBaseInfo.h */,
+				E95C1AAD1D4A4520006F1919 /* CLBaseInfo.m */,
+				E95C1AA61D4A4088006F1919 /* CLInfoPagesList.h */,
+				E95C1AA71D4A4088006F1919 /* CLInfoPagesList.m */,
+				E95C1AA91D4A4178006F1919 /* CLInfoPage.h */,
+				E95C1AAA1D4A4178006F1919 /* CLInfoPage.m */,
+				E95C1AAF1D4A4974006F1919 /* CLTaxonsList.h */,
+				E95C1AB01D4A4974006F1919 /* CLTaxonsList.m */,
+				E95C1AB21D4A49AB006F1919 /* CLTaxon.h */,
+				E95C1AB31D4A49AB006F1919 /* CLTaxon.m */,
+				E95C1AB51D4A4A8B006F1919 /* CLTaxonIcon.h */,
+				E95C1AB61D4A4A8B006F1919 /* CLTaxonIcon.m */,
+				E94C24B81D5120AE00369851 /* CLConfiguration.h */,
+				E94C24B91D5120AE00369851 /* CLConfiguration.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -523,17 +558,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9387FB41D2928A100DACE07 /* CLAppDelegate.m in Sources */,
+				E95C1AB11D4A4974006F1919 /* CLTaxonsList.m in Sources */,
 				E911926D1D3363B300D0C131 /* CLLoadScreen+Subviews.m in Sources */,
 				E911926A1D3361AE00D0C131 /* CLLoadScreen.m in Sources */,
 				E95C90811D3B862300A39A29 /* CLBannersListModel.m in Sources */,
 				E9387F811D2927FC00DACE07 /* main.m in Sources */,
 				E91192651D335EDE00D0C131 /* CLLoadScreenViewController.m in Sources */,
 				E967C07F1D464EE9001D5D6E /* CLJSONController.m in Sources */,
+				E95C1AAB1D4A4178006F1919 /* CLInfoPage.m in Sources */,
 				E949756D1D38FC5200522DFB /* CLURLController.m in Sources */,
 				E94975641D38D1C100522DFB /* CLLibraryAPI.m in Sources */,
 				E967C07C1D463A45001D5D6E /* CLHTTPController.m in Sources */,
+				E95C1AB41D4A49AB006F1919 /* CLTaxon.m in Sources */,
 				E95C90841D3B866300A39A29 /* CLBannerModel.m in Sources */,
 				E949756A1D38DA4400522DFB /* CLCacheController.m in Sources */,
+				E95C1AAE1D4A4520006F1919 /* CLBaseInfo.m in Sources */,
+				E95C1AB71D4A4A8B006F1919 /* CLTaxonIcon.m in Sources */,
+				E95C1AA81D4A4088006F1919 /* CLInfoPagesList.m in Sources */,
+				E94C24BA1D5120AE00369851 /* CLConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString<Optional> *description;
 @property (strong, nonatomic) NSString *url;
-@property (strong, nonatomic) NSString *date_update;
+@property (strong, nonatomic) NSDate *date_update;
 @property (assign, nonatomic) NSString<Optional> *link_type;
 @property (assign, nonatomic) NSString<Optional> *link_id;
 @property (strong, nonatomic) NSString<Optional> *link;

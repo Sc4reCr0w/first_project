@@ -18,9 +18,15 @@
 // LibraryAPI class
 #import "CLLibraryAPI.h"
 
-@interface CLLoadScreenViewController ()
+#import "CLConfiguration.h"
+
+NSString * const kServerAddress = @"http://136.243.226.243:8081/";
+
+@interface CLLoadScreenViewController () <CLLibraryAPIConfiguration>
 
 @property (strong, nonatomic) CLLoadScreen *loadScreenView;
+@property (strong, nonatomic) CLConfiguration *configuration;
+///////
 @property (strong, nonatomic) CLBannersListModel *bannersList;
 
 @end
@@ -38,6 +44,16 @@
     return _loadScreenView;
 }
 
+- (CLConfiguration *)configuration
+{
+    if(!_configuration)
+    {       
+        _configuration = [[CLConfiguration alloc] initWithServerAddress:kServerAddress andServerAPICallsDictionary:[self createServerAPICallsDictionary]];
+    }
+    
+    return _configuration;
+}
+
 #pragma mark - View Controller lifecycle
 
 - (void)loadView
@@ -45,6 +61,7 @@
     [super loadView];
     
     self.view = [self loadScreenView];
+    [CLLibraryAPI sharedInstance].delegate = self;
 }
 
 - (void)viewDidLoad
@@ -85,19 +102,19 @@
 
 #pragma Mark - Private methods
 
+- (void)setupUI
+{
+    [self view].backgroundColor = [UIColor whiteColor];
+    [self setupNavigationControllerView];
+    [self setupActivityIndicatorView];
+}
+
 - (void)setupNavigationControllerView
 {
     if (![[self navigationController] isNavigationBarHidden])
     {
         [[self navigationController] setNavigationBarHidden:YES animated:YES];
     }
-}
-
-- (void)setupUI
-{
-    [self view].backgroundColor = [UIColor whiteColor];
-    [self setupNavigationControllerView];
-    [self setupActivityIndicatorView];
 }
 
 - (void)setupActivityIndicatorView
@@ -109,8 +126,24 @@
 - (void)downloadInitialContent
 {
     [[[self loadScreenView] downloadActivityIndicatorView] startAnimating];
-    [[CLLibraryAPI sharedInstance] downloadBannersList];
+    [[CLLibraryAPI sharedInstance] downloadToCacheJSONObjectForAPICallKey:@"LOAD_BANNERS"];
     
+}
+
+- (NSDictionary *)createServerAPICallsDictionary
+{
+    return @{@"LOAD_BANNERS":@"api/banners",
+             @"LOAD_INFO_PAGE":@"/api/infopage",
+             @"LOAD_TAXON":@"/api/taxonss",
+             @"LOAD_BASE_INFO":@"/api/base-info",
+             @"LOAD_OPTION":@"/api/m_option_values"};
+}
+
+#pragma mark - Protocol
+
+- (CLConfiguration *)configurationForCLLibraryAPI
+{
+    return [self configuration];
 }
 
 #pragma mark - Navigation

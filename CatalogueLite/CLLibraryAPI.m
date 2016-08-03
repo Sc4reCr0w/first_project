@@ -18,10 +18,10 @@
 // JSON Controller
 #import "CLJSONController.h"
 
+#import "CLConfiguration.h"
+
 // BannersList JSON Model
 #import "CLBannersListModel.h"
-
-NSString * const kServerAddress = @"http://136.243.226.243:8081/";
 
 @interface CLLibraryAPI ()
 
@@ -92,26 +92,15 @@ NSString * const kServerAddress = @"http://136.243.226.243:8081/";
     return _JSONController;
 }
 
-- (NSURL *)serverAddress
-{
-    if (!_serverAddress)
-    {
-        _serverAddress = [NSURL URLWithString:kServerAddress];
-    }
-    
-    return _serverAddress;
-}
-
 #pragma Mark - Class public methods
 
-- (void)downloadBannersList
+- (void)downloadToCacheJSONObjectForAPICallKey:(NSString *)callKey
 {
+    NSURL *URLToJSONObject = [self getURLForKey:callKey];
     
-    NSURL *bannersListURL = [self getURLForKey:@"LOAD_BANNERS"];
+    if (!URLToJSONObject) return;
     
-    if (!bannersListURL) return;
-    
-    [[self HTTPController] downloadDataForURL:bannersListURL withCallback:^(NSData *data, NSURLResponse *response, NSError *error){
+    [[self HTTPController] downloadDataForURL:URLToJSONObject withCallback:^(NSData *data, NSURLResponse *response, NSError *error){
         
         if (!error)
         {
@@ -135,7 +124,10 @@ NSString * const kServerAddress = @"http://136.243.226.243:8081/";
 
 - (NSURL *)getURLForKey:(NSString *)key
 {
-   return [[self URLController] makeURLForKey:key relativeToBaseURL:[self serverAddress]];
+    CLConfiguration *conf = [[self delegate] configurationForCLLibraryAPI];
+    NSString *URLTailString = [[conf serverAPI] objectForKey:key];
+    
+    return [[self URLController] makeURLForTailString:URLTailString relativeToBaseURL:[conf serverAddress]];
 }
 
 - (void)fetchToCacheData:(NSData *)data forKeyString:(NSString *)keyString

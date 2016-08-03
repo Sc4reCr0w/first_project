@@ -8,21 +8,12 @@
 
 #import "CLBannersListModel.h"
 
+#import "CLBannerModel.h"
+
 @implementation CLBannersListModel
 
 - (void)removeInactiveBannersFromList
 {
-    /*
-    for (CLBannerModel *banner in [self banners])
-    {
-        BOOL active = [[banner active] boolValue];
-        if (!active)
-        {
-            [[self banners] removeObject:banner];
-        }
-    }
-    */
-    
     for (intptr_t i = 0; i < [[self banners] count]; ++i)
     {
         BOOL active = [[[self banners][i] active]boolValue];

@@ -10,7 +10,7 @@
 
 @interface CLURLController : NSObject
 
-- (NSURL *)makeURLForKey:(NSString *)key relativeToBaseURL:(NSURL *)baseURL;
+- (NSURL *)makeURLForTailString:(NSString *)key relativeToBaseURL:(NSURL *)baseURL;
 
 - (NSURL *)addQueryParametersToURL:(NSURL *)URL fromDictionary:(NSDictionary *)dictionary;
 

@@ -10,11 +10,9 @@
 
 @implementation CLURLController
 
-- (NSURL *)makeURLForKey:(NSString *)key relativeToBaseURL:(NSURL *)baseURL
+- (NSURL *)makeURLForTailString:(NSString *)key relativeToBaseURL:(NSURL *)baseURL
 {
-    NSString *URLTailString = [[self validURLTail] objectForKey:key];
-    NSURL *result = [NSURL URLWithString:URLTailString relativeToURL:baseURL];
-    
+    NSURL *result = [NSURL URLWithString:key relativeToURL:baseURL];
     return result;
 }
 

@@ -7,8 +7,8 @@
 //
 
 #import <JSONModel/JSONModel.h>
-// For protocol
-#import "CLBannerModel.h"
+
+@protocol CLBannerModel;
 
 @interface CLBannersListModel : JSONModel
 
