@@ -108,6 +108,7 @@
 		E95C90801D3B862300A39A29 /* CLBannersListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBannersListModel.m; sourceTree = "<group>"; };
 		E95C90821D3B866300A39A29 /* CLBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBannerModel.h; sourceTree = "<group>"; };
 		E95C90831D3B866300A39A29 /* CLBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBannerModel.m; sourceTree = "<group>"; };
+		E96623801D527AFF0035F5BF /* CLLibraryAPIConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLibraryAPIConfiguration.h; sourceTree = "<group>"; };
 		E967C07A1D463A45001D5D6E /* CLHTTPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHTTPController.h; sourceTree = "<group>"; };
 		E967C07B1D463A45001D5D6E /* CLHTTPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHTTPController.m; sourceTree = "<group>"; };
 		E967C07D1D464EE9001D5D6E /* CLJSONController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLJSONController.h; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 				E9387FB31D2928A100DACE07 /* CLAppDelegate.m */,
 				E94975621D38D1C100522DFB /* CLLibraryAPI.h */,
 				E94975631D38D1C100522DFB /* CLLibraryAPI.m */,
+				E96623801D527AFF0035F5BF /* CLLibraryAPIConfiguration.h */,
 				E94975681D38DA4400522DFB /* CLCacheController.h */,
 				E94975691D38DA4400522DFB /* CLCacheController.m */,
 				E949756B1D38FC5200522DFB /* CLURLController.h */,

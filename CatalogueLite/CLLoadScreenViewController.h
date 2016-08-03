@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol CLLibraryAPIConfiguration;
-@class CLLibraryAPI;
-
 @interface CLLoadScreenViewController : UIViewController
 
 @end

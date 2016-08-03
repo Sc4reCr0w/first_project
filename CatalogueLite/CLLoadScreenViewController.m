@@ -17,15 +17,13 @@
 
 // LibraryAPI class
 #import "CLLibraryAPI.h"
-
-#import "CLConfiguration.h"
+#import "CLLibraryAPIConfiguration.h"
 
 NSString * const kServerAddress = @"http://136.243.226.243:8081/";
 
 @interface CLLoadScreenViewController () <CLLibraryAPIConfiguration>
 
 @property (strong, nonatomic) CLLoadScreen *loadScreenView;
-@property (strong, nonatomic) CLConfiguration *configuration;
 ///////
 @property (strong, nonatomic) CLBannersListModel *bannersList;
 
@@ -42,16 +40,6 @@ NSString * const kServerAddress = @"http://136.243.226.243:8081/";
     }
     
     return _loadScreenView;
-}
-
-- (CLConfiguration *)configuration
-{
-    if(!_configuration)
-    {       
-        _configuration = [[CLConfiguration alloc] initWithServerAddress:kServerAddress andServerAPICallsDictionary:[self createServerAPICallsDictionary]];
-    }
-    
-    return _configuration;
 }
 
 #pragma mark - View Controller lifecycle
@@ -126,8 +114,10 @@ NSString * const kServerAddress = @"http://136.243.226.243:8081/";
 - (void)downloadInitialContent
 {
     [[[self loadScreenView] downloadActivityIndicatorView] startAnimating];
-    [[CLLibraryAPI sharedInstance] downloadToCacheJSONObjectForAPICallKey:@"LOAD_BANNERS"];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[CLLibraryAPI sharedInstance] downloadToCacheJSONObjectForAPICallKey:@"LOAD_BANNERS"];
+    });
 }
 
 - (NSDictionary *)createServerAPICallsDictionary
@@ -141,9 +131,14 @@ NSString * const kServerAddress = @"http://136.243.226.243:8081/";
 
 #pragma mark - Protocol
 
-- (CLConfiguration *)configurationForCLLibraryAPI
+- (void)serverAddressForCLLibraryAPI:(CLLibraryAPI *)librariAPI
 {
-    return [self configuration];
+    [librariAPI setServersHTTPAddress:kServerAddress];
+}
+
+- (void)serverAPICallsForCLLibraryAPI:(CLLibraryAPI *)librariAPI
+{
+    [librariAPI setServersAPICalls:[self createServerAPICallsDictionary]];
 }
 
 #pragma mark - Navigation

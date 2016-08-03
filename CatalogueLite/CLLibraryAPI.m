@@ -8,6 +8,7 @@
 
 // This
 #import "CLLibraryAPI.h"
+#import "CLLibraryAPIConfiguration.h"
 
 // Cache
 #import "CLCacheController.h"
@@ -24,7 +25,9 @@
 #import "CLBannersListModel.h"
 
 @interface CLLibraryAPI ()
-
+{
+    CLConfiguration *configuration;
+}
 @property (strong, nonatomic) CLCacheController *cacheController;
 @property (strong, nonatomic) CLURLController *URLController;
 @property (strong, nonatomic) CLHTTPController *HTTPController;
@@ -96,9 +99,25 @@
 
 - (void)downloadToCacheJSONObjectForAPICallKey:(NSString *)callKey
 {
-    NSURL *URLToJSONObject = [self getURLForKey:callKey];
+    if([self checkCacheForObjectWithKey:callKey])
+        return;
     
-    if (!URLToJSONObject) return;
+    [self setupDownloadForKey:callKey];
+}
+
+#pragma Mark - Class private methods
+
+- (BOOL)checkCacheForObjectWithKey:(NSString *)key
+{
+    if([[self cacheController] getDataForKey:key])
+        return YES;
+    
+    return NO;
+}
+
+- (void)setupDownloadForKey:(NSString *)key
+{
+    NSURL *URLToJSONObject = [self getURLForKey:key];
     
     [[self HTTPController] downloadDataForURL:URLToJSONObject withCallback:^(NSData *data, NSURLResponse *response, NSError *error){
         
@@ -106,33 +125,41 @@
         {
             CLBannersListModel *bannersList = (CLBannersListModel *)[[self JSONController] JSONModelForObjectClass:[CLBannersListModel class] withData:data];
             [bannersList removeInactiveBannersFromList];
-            NSData *dataJSON = [[self JSONController] getDataFromJSONModelObject:bannersList];
             
-            [self fetchToCacheData:dataJSON forKeyString:[response URL].absoluteString];
+            [self cacheData:bannersList forKeyString:[response URL].absoluteString];
         }
         else
         {
-            // notify view controller about error by protocol method
+            // notify view controller about error by notification
         }
     }];
-    
 }
-
-#pragma Mark - Class private methods
-
-#pragma Mark - Private methods helpers
 
 - (NSURL *)getURLForKey:(NSString *)key
 {
-    CLConfiguration *conf = [[self delegate] configurationForCLLibraryAPI];
-    NSString *URLTailString = [[conf serverAPI] objectForKey:key];
+    [self updateConfiguration];
     
-    return [[self URLController] makeURLForTailString:URLTailString relativeToBaseURL:[conf serverAddress]];
+    NSString *URLTailString = [[configuration serverAPI] objectForKey:key];
+    return [[self URLController] makeURLForTailString:URLTailString relativeToBaseURL:[configuration serverAddress]];
 }
 
-- (void)fetchToCacheData:(NSData *)data forKeyString:(NSString *)keyString
+- (void)updateConfiguration
 {
-    [[self cacheController] storeData:data forKey:keyString];
+    [[self delegate] serverAddressForCLLibraryAPI:self];
+    [[self delegate] serverAPICallsForCLLibraryAPI:self];
+    
+    configuration = [[CLConfiguration alloc] initWithServerAddress:[self serversHTTPAddress] andServerAPICallsDictionary:[self serversAPICalls]];
 }
+
+- (void)cacheData:(id)data forKeyString:(NSString *)keyString
+{
+    NSData *dataJSON = [[self JSONController] getDataFromJSONModelObject:data];
+    if(!dataJSON)
+        return;
+    
+    [[self cacheController] storeData:dataJSON forKey:keyString];
+}
+
+#pragma Mark - Private methods helpers
 
 @end
