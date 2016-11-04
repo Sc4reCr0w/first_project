@@ -8,16 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CLLibraryAPIConfiguration;
+typedef void (^IBESAPISuccess)(NSArray *array);
+typedef void (^IBESAPIFailure)(NSError *error);
 
 @interface CLLibraryAPI : NSObject
 
-@property (weak, nonatomic) id<CLLibraryAPIConfiguration> delegate;
-@property (strong, nonatomic) NSString *serversHTTPAddress;
-@property (strong, nonatomic) NSDictionary *serversAPICalls;
-
 + (instancetype)sharedInstance;
 
-- (void)downloadToCacheJSONObjectForAPICallKey:(NSString *)callKey;
+- (void)getMenuContent:(void (^)(void))success failureBlock:(void (^)(void))failure;
+
+- (void)bannersArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure;
+
+- (void)infoPagesArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure;
+
+- (void)taxonsArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure;
+
+- (void)baseInfoArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure;
 
 @end

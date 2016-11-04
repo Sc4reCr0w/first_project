@@ -8,38 +8,19 @@
 
 // This
 #import "CLLoadScreen.h"
-
 // Subviews helper
 #import "CLLoadScreen+Subviews.h"
 
+@interface CLLoadScreen ()
+
+@property (nonatomic, readwrite) UIImageView *logoImage;
+@property (nonatomic, readwrite) UIActivityIndicatorView *downloadIndicator;
+
+@end
+
 @implementation CLLoadScreen
-/*{
-    UIImageView *_logoImageView;
-    UIActivityIndicatorView *_downloadActivityIndicatorView;
-}
 
-@synthesize logoImageView = _logoImageView;
-@synthesize downloadActivityIndicatorView = _downloadActivityIndicatorView;*/
-
-- (UIImageView *)logoImageView
-{
-    if (!_logoImageView) {
-        _logoImageView = [self addImageViewWithImageNamed:@"Logo"];
-        [_logoImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
-    
-    return _logoImageView;
-}
-
-- (UIActivityIndicatorView *)downloadActivityIndicatorView
-{
-    if (!_downloadActivityIndicatorView) {
-        _downloadActivityIndicatorView = [self addDownloadActivityIndicator];
-        [_downloadActivityIndicatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    }
-    
-    return _downloadActivityIndicatorView;
-}
+#pragma mark - Initialisation
 
 - (instancetype)init
 {
@@ -48,20 +29,61 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
+    if( self = [super initWithFrame:frame] )
+    {
         
-        [self addSubview:[self logoImageView]];
-        [self addSubview:[self downloadActivityIndicatorView]];
+        [self addSubview:[self logoImage]];
+        [self addSubview:[self downloadIndicator]];
         
-        [self setupCenterPointYConstraintWithItem:self toItem:[self logoImageView] withConstant:0.0f];
+        [self setupCenterPointYConstraintWithItem:self toItem:[self logoImage] withConstant:0.0f];
         
-        const float downlaodActivityIndicatorViewCenterYShift = -([[self logoImageView] frame].size.height / 2 + [[self downloadActivityIndicatorView] frame].size.height);
+        const float downlaodActivityIndicatorViewCenterYShift = -([[self logoImage] frame].size.height / 2 + [[self downloadIndicator] frame].size.height);
         
-        [self setupCenterPointYConstraintWithItem:self toItem:[self downloadActivityIndicatorView] withConstant:downlaodActivityIndicatorViewCenterYShift];
+        [self setupCenterPointYConstraintWithItem:self toItem:[self downloadIndicator] withConstant:downlaodActivityIndicatorViewCenterYShift];
     }
     
     return self;
 }
+
+#pragma mark - View life cycle
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    
+    [self setup];
+}
+
+- (void)setup
+{
+    
+}
+
+#pragma Mark - Lazy initialisation of instance variables
+
+- (UIImageView *)logoImage
+{
+    if(!_logoImage)
+    {
+        _logoImage = [self addImageViewWithImageNamed:@"Logo"];
+        [_logoImage setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    
+    return _logoImage;
+}
+
+- (UIActivityIndicatorView *)downloadIndicator
+{
+    if(!_downloadIndicator)
+    {
+        _downloadIndicator = [self addDownloadActivityIndicator];
+        [_downloadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    
+    return _downloadIndicator;
+}
+
+#pragma mark -
 
 - (void)updateConstraints
 {
@@ -77,9 +99,7 @@
                                                          toItem:view2
                                                       attribute:NSLayoutAttributeCenterX
                                                      multiplier:1.0f
-                                                       constant:0.0f
-                          ]
-     ];
+                                                       constant:0.0f]];
     
     // Center Y
     [view1 addConstraint:[NSLayoutConstraint constraintWithItem:view1
@@ -88,9 +108,7 @@
                                                          toItem:view2
                                                       attribute:NSLayoutAttributeCenterY
                                                      multiplier:1.0f
-                                                       constant:constant
-                          ]
-     ];
+                                                       constant:constant]];
 }
 
 /*

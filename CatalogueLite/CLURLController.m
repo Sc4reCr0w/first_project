@@ -20,13 +20,14 @@
 {
     NSURLComponents *urlComponets = [NSURLComponents componentsWithURL:URL resolvingAgainstBaseURL:NO];
     
-    NSArray *dictionaryKeys = [dictionary allKeys];
-    NSArray *dictionaryValues = [dictionary allValues];
+    //NSArray *dictionaryKeys = [dictionary allKeys];
+    //NSArray *dictionaryValues = [dictionary allValues];
     
     NSMutableArray *queryItemsArray = [NSMutableArray arrayWithCapacity:[dictionary count]];
-    for (NSUInteger i = 0; i < [dictionary count]; ++i)
+
+    for(NSString *key in dictionary)
     {
-        NSURLQueryItem *queryItem = [NSURLQueryItem queryItemWithName:dictionaryKeys[i] value:dictionaryValues[i]];
+        NSURLQueryItem *queryItem = [NSURLQueryItem queryItemWithName:key value:dictionary[key]];
         [queryItemsArray addObject:queryItem];
     }
     
@@ -34,15 +35,6 @@
     
     return [urlComponets URL];
     
-}
-
-- (NSDictionary *)validURLTail
-{
-    return @{@"LOAD_BANNERS":@"api/banners",
-             @"LOAD_INFO_PAGE":@"/api/infopage",
-             @"LOAD_TAXON":@"/api/taxonss",
-             @"LOAD_BASE_INFO":@"/api/base-info",
-             @"LOAD_OPTION":@"/api/m_option_values"};
 }
 
 @end

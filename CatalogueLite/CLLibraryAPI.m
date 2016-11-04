@@ -8,38 +8,237 @@
 
 // This
 #import "CLLibraryAPI.h"
-#import "CLLibraryAPIConfiguration.h"
 
 // Cache
-#import "CLCacheController.h"
-// URL Controller
-#import "CLURLController.h"
-// HTTP Controller
-#import "CLHTTPController.h"
-// JSON Controller
-#import "CLJSONController.h"
+#import "IBESCache.h"
+// BlockOperation
+#import "IBESBlockOperationWithProgress.h"
 
-#import "CLConfiguration.h"
-
-// BannersList JSON Model
-#import "CLBannersListModel.h"
+// Banners Service
+#import "IBESBannersService.h"
+// InfoPage Service
+#import "IBESInfoPageService.h"
+// BaseInfo Service
+#import "IBESBaseInfoService.h"
+// Taxons Service
+#import "IBESTaxonsService.h"
 
 @interface CLLibraryAPI ()
-{
-    CLConfiguration *configuration;
-}
-@property (strong, nonatomic) CLCacheController *cacheController;
-@property (strong, nonatomic) CLURLController *URLController;
-@property (strong, nonatomic) CLHTTPController *HTTPController;
-@property (strong, nonatomic) CLJSONController *JSONController;
 
-@property (strong, nonatomic) CLBannersListModel *bannersList;
+@property (nonatomic) IBESCache *cache;
+@property (nonatomic) IBESBlockOperationWithProgress *operation;
+
+@property (nonatomic) IBESBannersService *bannersService;
+@property (nonatomic) IBESInfoPageService *infoPageService;
+@property (nonatomic) IBESTaxonsService *taxonsService;
+@property (nonatomic) IBESBaseInfoService *baseInfoService;
 
 @end
 
 @implementation CLLibraryAPI
 
-#pragma Mark - Singleton initialization
+#pragma mark - Get some menu content
+
+- (void)getMenuContent:(void (^)(void))success failureBlock:(void (^)(void))failure
+{
+    NSMutableArray<void (^)(void)> *tasksArray = [NSMutableArray new];
+    
+    [tasksArray addObject:^{
+        [self bannersArrayWithSuccessBlock:^(NSArray *array)
+        {
+            [[self operation] advanceProgress];
+            
+            if ( [[self operation] isCompleted] )
+            {
+                if (success)
+                {
+                    success();
+                }
+            }
+        } failureBlock:^(NSError *error)
+        {
+            [[self operation] cancelOperation];
+            
+            if (failure)
+            {
+                failure();
+            }
+        }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self infoPagesArrayWithSuccessBlock:^(NSArray *array)
+         {
+             [[self operation] advanceProgress];
+             
+             if ( [[self operation] isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         } failureBlock:^(NSError *error)
+         {
+             [[self operation] cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self taxonsArrayWithSuccessBlock:^(NSArray *array)
+         {
+             [[self operation] advanceProgress];
+             
+             if ( [[self operation] isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         } failureBlock:^(NSError *error)
+         {
+             [[self operation] cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self baseInfoArrayWithSuccessBlock:^(NSArray *array)
+         {
+             [[self operation] advanceProgress];
+             
+             if ( [[self operation] isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         } failureBlock:^(NSError *error)
+         {
+             [[self operation] cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [[self operation] addExecutionBlocksFromArray:tasksArray];
+    
+    [[self operation] executeOperation];
+}
+
+#pragma Mark - Class public methods
+
+- (void)bannersArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure
+{
+    NSArray *banners = [self.cache objectForKey:@"banners"];
+    
+    if ( [banners count] )
+    {
+        if (success)
+        {
+            success(banners);
+        }
+    }
+    else
+    {
+        [self.bannersService bannersWithSuccessBlock:^(NSArray *banners)
+        {
+            [self.cache setObject:banners forKey:@"banners"];
+            if (success)
+            {
+                success(banners);
+            }
+        } failureBlock:failure];
+    }
+}
+
+- (void)infoPagesArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure
+{
+    NSArray *infoPages = [self.cache objectForKey:@"infoPages"];
+    
+    if ( [infoPages count] )
+    {
+        if (success)
+        {
+            success(infoPages);
+        }
+    }
+    else
+    {
+        [self.infoPageService infoPagesWithSuccessBlock:^(NSArray *infoPages)
+        {
+             [self.cache setObject:infoPages forKey:@"infoPage"];
+             if (success)
+             {
+                 success(infoPages);
+             }
+         } failureBlock:failure];
+    }
+}
+
+- (void)taxonsArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure
+{
+    NSArray *taxons = [self.cache objectForKey:@"taxons"];
+    
+    if ( [taxons count] )
+    {
+        if (success)
+        {
+            success(taxons);
+        }
+    }
+    else
+    {
+        [self.taxonsService taxonsWithSuccessBlock:^(NSArray *taxons)
+         {
+             [self.cache setObject:taxons forKey:@"taxons"];
+             if (success)
+             {
+                 success(taxons);
+             }
+         } failureBlock:failure];
+    }
+}
+
+- (void)baseInfoArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure
+{
+    NSArray *baseInfo = [self.cache objectForKey:@"baseInfo"];
+    
+    if ( [baseInfo count] )
+    {
+        if (success)
+        {
+            success(baseInfo);
+        }
+    }
+    else
+    {
+        [self.baseInfoService baseInfoWithSuccessBlock:^(NSArray *baseInfo)
+         {
+             [self.cache setObject:baseInfo forKey:@"baseInfo"];
+             if (success)
+             {
+                 success(baseInfo);
+             }
+         } failureBlock:failure];
+    }
+}
+
+#pragma Mark - Singleton initialisation
 
 + (instancetype)sharedInstance
 {
@@ -53,113 +252,66 @@
     return sharedInstance_;
 }
 
-#pragma Mark - Lazy initialization of instance variables
+#pragma Mark - Lazy initialisation of instance variables
 
-- (CLCacheController *)cacheController
+- (IBESCache *)cache
 {
-    if (!_cacheController)
+    if(!_cache)
     {
-        _cacheController = [[CLCacheController alloc] init];
+        _cache = [[IBESCache alloc] init];
     }
     
-    return _cacheController;
+    return _cache;
 }
 
-- (CLURLController *)URLController
+- (IBESBlockOperationWithProgress *)operation
 {
-    if (!_URLController)
+    if (!_operation)
     {
-        _URLController = [[CLURLController alloc] init];
+        _operation = [IBESBlockOperationWithProgress new];
     }
     
-    return _URLController;
+    return _operation;
 }
 
-- (CLHTTPController *)HTTPController
+- (IBESBannersService *)bannersService
 {
-    if (!_HTTPController)
+    if(!_bannersService)
     {
-        _HTTPController = [[CLHTTPController alloc] init];
+        _bannersService = [[IBESBannersService alloc] init];
     }
     
-    return _HTTPController;
+    return _bannersService;
 }
 
-- (CLJSONController *)JSONController
+- (IBESInfoPageService *)infoPageService
 {
-    if (!_JSONController)
+    if(!_infoPageService)
     {
-        _JSONController = [[CLJSONController alloc] init];
+        _infoPageService = [[IBESInfoPageService alloc] init];
     }
     
-    return _JSONController;
+    return _infoPageService;
 }
 
-#pragma Mark - Class public methods
-
-- (void)downloadToCacheJSONObjectForAPICallKey:(NSString *)callKey
+- (IBESBaseInfoService *)baseInfoService
 {
-    if([self checkCacheForObjectWithKey:callKey])
-        return;
+    if(!_baseInfoService)
+    {
+        _baseInfoService = [[IBESBaseInfoService alloc] init];
+    }
     
-    [self setupDownloadForKey:callKey];
+    return _baseInfoService;
 }
 
-#pragma Mark - Class private methods
-
-- (BOOL)checkCacheForObjectWithKey:(NSString *)key
+- (IBESTaxonsService *)taxonsService
 {
-    if([[self cacheController] getDataForKey:key])
-        return YES;
+    if(!_taxonsService)
+    {
+        _taxonsService = [[IBESTaxonsService alloc] init];
+    }
     
-    return NO;
+    return _taxonsService;
 }
-
-- (void)setupDownloadForKey:(NSString *)key
-{
-    NSURL *URLToJSONObject = [self getURLForKey:key];
-    
-    [[self HTTPController] downloadDataForURL:URLToJSONObject withCallback:^(NSData *data, NSURLResponse *response, NSError *error){
-        
-        if (!error)
-        {
-            CLBannersListModel *bannersList = (CLBannersListModel *)[[self JSONController] JSONModelForObjectClass:[CLBannersListModel class] withData:data];
-            [bannersList removeInactiveBannersFromList];
-            
-            [self cacheData:bannersList forKeyString:[response URL].absoluteString];
-        }
-        else
-        {
-            // notify view controller about error by notification
-        }
-    }];
-}
-
-- (NSURL *)getURLForKey:(NSString *)key
-{
-    [self updateConfiguration];
-    
-    NSString *URLTailString = [[configuration serverAPI] objectForKey:key];
-    return [[self URLController] makeURLForTailString:URLTailString relativeToBaseURL:[configuration serverAddress]];
-}
-
-- (void)updateConfiguration
-{
-    [[self delegate] serverAddressForCLLibraryAPI:self];
-    [[self delegate] serverAPICallsForCLLibraryAPI:self];
-    
-    configuration = [[CLConfiguration alloc] initWithServerAddress:[self serversHTTPAddress] andServerAPICallsDictionary:[self serversAPICalls]];
-}
-
-- (void)cacheData:(id)data forKeyString:(NSString *)keyString
-{
-    NSData *dataJSON = [[self JSONController] getDataFromJSONModelObject:data];
-    if(!dataJSON)
-        return;
-    
-    [[self cacheController] storeData:dataJSON forKey:keyString];
-}
-
-#pragma Mark - Private methods helpers
 
 @end

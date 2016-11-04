@@ -6,6 +6,7 @@
 //  Copyright © 2016 IBES. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "CLLoadScreen.h"
 
 @interface CLLoadScreen (Subviews)

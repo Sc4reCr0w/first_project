@@ -6,11 +6,12 @@
 //  Copyright © 2016 IBES. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 @interface CLLoadScreen : UIView
 
-@property (strong, nonatomic) UIImageView *logoImageView;
-@property (strong, nonatomic) UIActivityIndicatorView *downloadActivityIndicatorView;
+@property (nonatomic, readonly) UIImageView *logoImage;
+@property (nonatomic, readonly) UIActivityIndicatorView *downloadIndicator;
 
 @end

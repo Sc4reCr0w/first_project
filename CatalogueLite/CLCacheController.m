@@ -17,6 +17,8 @@
 
 @implementation CLCacheController
 
+#pragma Mark - Designatade initializer
+
 - (instancetype)init
 {
     if (self = [super init])
@@ -30,21 +32,24 @@
     return self;
 }
 
-- (NSData *)getDataForKey:(NSString *)keyString
+#pragma Mark - Public methods
+
+- (id)getDataForKey:(NSString *)keyString
 {
     return [_cache objectForKey:keyString];
 }
 
-- (void)storeData:(NSData *)data forKey:(NSString *)keyString
+- (void)storeObject:(id)object forKey:(NSString *)keyString
 {
-    NSData *cachedData = [_cache objectForKey:keyString];
-    
-    if (cachedData)
+    if(object)
     {
-        [_cache removeObjectForKey:keyString];
+        if([self getDataForKey:keyString])
+        {
+            [_cache removeObjectForKey:keyString];
+        }
+        
+        [_cache setObject:object forKey:keyString];
     }
-    
-    [_cache setObject:data forKey:keyString cost:[data length]];
 }
 
 @end

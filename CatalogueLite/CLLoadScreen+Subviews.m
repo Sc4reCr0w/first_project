@@ -14,6 +14,7 @@
 {
     UIImage *image = [UIImage imageNamed:name];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    
     imageView.frame = CGRectMake(0.0, 0.0, [image size].width, [image size].height);
     [imageView sizeToFit];
     
@@ -22,7 +23,10 @@
 
 - (UIActivityIndicatorView *)addDownloadActivityIndicator
 {
-    UIActivityIndicatorView *downloadActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    UIActivityIndicatorView *downloadActivityIndicator =
+    [[UIActivityIndicatorView alloc]
+     initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
     [downloadActivityIndicator sizeToFit];
     
     return downloadActivityIndicator;
