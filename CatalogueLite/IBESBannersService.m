@@ -29,15 +29,27 @@
                         ^(NSURLSessionDataTask *task, id responseObject)
                         {
                             IBESBannersParser *parser = self.bannersParser;
-                            NSArray *banners = [parser bannersFromJSON:responseObject];
+                            NSArray *bannersRaw = [parser bannersFromJSON:responseObject];
                             
-                            if(banners && success)
+                            if(bannersRaw && success)
                             {
+                                NSURL *baseURL = [self.bannersRequest baseURL];
+                                NSMutableArray *banners = [NSMutableArray arrayWithCapacity:bannersRaw.count];
+                                
+                                for (NSDictionary *bannerRaw in bannersRaw)
+                                {
+                                    NSMutableDictionary *banner = [bannerRaw mutableCopy];
+                                    NSURL *bannerURL = [NSURL URLWithString:bannerRaw[@"url"] relativeToURL:baseURL];
+                                    banner[@"url"] = bannerURL;
+                                
+                                    [banners addObject:banner];
+                                }
+                                
                                 void (^dyspatchBlock)() = ^{ success(banners); };
                                 dispatch_async(dispatch_get_main_queue(), dyspatchBlock);
                             }
                             
-                            if(!banners && failure)
+                            if(!bannersRaw && failure)
                             {
                                 NSError *parserError = [parser getParserError];
                                 void (^dyspatchBlock)() = ^{ failure(parserError); };

@@ -9,7 +9,7 @@
 #import "CLAppDelegate.h"
 
 // Load Screen View Controller
-#import "CLLoadScreenViewController.h"
+#import "IBESLoadingViewController.h"
 
 @interface CLAppDelegate ()
 
@@ -23,7 +23,7 @@
 
 - (void)completeUserInterface
 {
-    CLLoadScreenViewController *loadScreenController = [[CLLoadScreenViewController alloc] init];
+    IBESLoadingViewController *loadScreenController = [[IBESLoadingViewController alloc] init];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loadScreenController];
     

@@ -6,8 +6,8 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "IBESViewController.h"
 
-@interface IBESLoadingViewController : UIViewController
+@interface IBESLoadingViewController : IBESViewController
 
 @end

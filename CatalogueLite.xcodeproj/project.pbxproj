@@ -15,11 +15,9 @@
 		E906ACCA1DA6810D001E6F63 /* IBESParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E906ACC91DA6810D001E6F63 /* IBESParser.m */; };
 		E90886AF1D9032A3004E90F9 /* IBESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E90886AE1D9032A3004E90F9 /* IBESCache.m */; };
 		E90B81AA1D9BB9D300EAAF75 /* IBESBannersRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B81A91D9BB9D300EAAF75 /* IBESBannersRequest.m */; };
-		E91192651D335EDE00D0C131 /* CLLoadScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91192641D335EDD00D0C131 /* CLLoadScreenViewController.m */; };
 		E911926A1D3361AE00D0C131 /* CLLoadScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = E91192691D3361AE00D0C131 /* CLLoadScreen.m */; };
 		E911926D1D3363B300D0C131 /* CLLoadScreen+Subviews.m in Sources */ = {isa = PBXBuildFile; fileRef = E911926C1D3363B300D0C131 /* CLLoadScreen+Subviews.m */; };
 		E9387F811D2927FC00DACE07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9387F801D2927FC00DACE07 /* main.m */; };
-		E9387F8A1D2927FC00DACE07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9387F881D2927FC00DACE07 /* Main.storyboard */; };
 		E9387F8C1D2927FC00DACE07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9387F8B1D2927FC00DACE07 /* Assets.xcassets */; };
 		E9387F8F1D2927FC00DACE07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9387F8D1D2927FC00DACE07 /* LaunchScreen.storyboard */; };
 		E9387F9A1D2927FC00DACE07 /* CatalogueLiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9387F991D2927FC00DACE07 /* CatalogueLiteTests.m */; };
@@ -34,6 +32,8 @@
 		E956935E1DA94DC3008881B4 /* IBESBannerJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E956935D1DA94DC3008881B4 /* IBESBannerJSONModel.m */; };
 		E95C90761D3A5FA300A39A29 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95C90751D3A5FA300A39A29 /* SystemConfiguration.framework */; };
 		E976C52A1D8A496B00EB4DB8 /* IBESService.m in Sources */ = {isa = PBXBuildFile; fileRef = E976C5291D8A496B00EB4DB8 /* IBESService.m */; };
+		E991C99D1DD483A80003A824 /* IBESViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E991C99C1DD483A80003A824 /* IBESViewController.m */; };
+		E9AAC5271DCCB92D00E0326C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AAC5251DCCB92D00E0326C /* Main.storyboard */; };
 		E9BAD0681DAE33FB0010820E /* IBESInfoPageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BAD0671DAE33FB0010820E /* IBESInfoPageParser.m */; };
 		E9BAD06B1DAE3DC10010820E /* IBESInfoPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BAD06A1DAE3DC10010820E /* IBESInfoPageRequest.m */; };
 		E9BAD06E1DAE3EF00010820E /* IBESInfoPageService.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BAD06D1DAE3EF00010820E /* IBESInfoPageService.m */; };
@@ -87,15 +87,12 @@
 		E90886AE1D9032A3004E90F9 /* IBESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBESCache.m; sourceTree = "<group>"; };
 		E90B81A81D9BB9D300EAAF75 /* IBESBannersRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBESBannersRequest.h; sourceTree = "<group>"; };
 		E90B81A91D9BB9D300EAAF75 /* IBESBannersRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBESBannersRequest.m; sourceTree = "<group>"; };
-		E91192631D335EDD00D0C131 /* CLLoadScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadScreenViewController.h; sourceTree = "<group>"; };
-		E91192641D335EDD00D0C131 /* CLLoadScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadScreenViewController.m; sourceTree = "<group>"; };
 		E91192681D3361AE00D0C131 /* CLLoadScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadScreen.h; sourceTree = "<group>"; };
 		E91192691D3361AE00D0C131 /* CLLoadScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadScreen.m; sourceTree = "<group>"; };
 		E911926B1D3363B300D0C131 /* CLLoadScreen+Subviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLoadScreen+Subviews.h"; sourceTree = "<group>"; };
 		E911926C1D3363B300D0C131 /* CLLoadScreen+Subviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLoadScreen+Subviews.m"; sourceTree = "<group>"; };
 		E9387F7C1D2927FC00DACE07 /* CatalogueLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatalogueLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9387F801D2927FC00DACE07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E9387F891D2927FC00DACE07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9387F8B1D2927FC00DACE07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9387F8E1D2927FC00DACE07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9387F901D2927FC00DACE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +121,9 @@
 		E95C90751D3A5FA300A39A29 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E976C5281D8A496B00EB4DB8 /* IBESService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBESService.h; sourceTree = "<group>"; };
 		E976C5291D8A496B00EB4DB8 /* IBESService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBESService.m; sourceTree = "<group>"; };
+		E991C99B1DD483A80003A824 /* IBESViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBESViewController.h; sourceTree = "<group>"; };
+		E991C99C1DD483A80003A824 /* IBESViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBESViewController.m; sourceTree = "<group>"; };
+		E9AAC5261DCCB92D00E0326C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9BAD0661DAE33FB0010820E /* IBESInfoPageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBESInfoPageParser.h; sourceTree = "<group>"; };
 		E9BAD0671DAE33FB0010820E /* IBESInfoPageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBESInfoPageParser.m; sourceTree = "<group>"; };
 		E9BAD0691DAE3DC10010820E /* IBESInfoPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBESInfoPageRequest.h; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 				E9387F801D2927FC00DACE07 /* main.m */,
 				E9387FB21D2928A100DACE07 /* CLAppDelegate.h */,
 				E9387FB31D2928A100DACE07 /* CLAppDelegate.m */,
-				E9387F881D2927FC00DACE07 /* Main.storyboard */,
+				E9AAC5251DCCB92D00E0326C /* Main.storyboard */,
 				E9387F8D1D2927FC00DACE07 /* LaunchScreen.storyboard */,
 				E9387F8B1D2927FC00DACE07 /* Assets.xcassets */,
 				E9387F901D2927FC00DACE07 /* Info.plist */,
@@ -372,6 +372,8 @@
 				E935FA6C1D9E1648007C1418 /* Parser */,
 				E90B81A51D9BB95700EAAF75 /* Request */,
 				E90B81A61D9BB96900EAAF75 /* Service */,
+				E991C99B1DD483A80003A824 /* IBESViewController.h */,
+				E991C99C1DD483A80003A824 /* IBESViewController.m */,
 			);
 			name = Abstruct;
 			sourceTree = "<group>";
@@ -439,8 +441,6 @@
 		E9E0EDD11DCA14450083F16B /* LoadingController */ = {
 			isa = PBXGroup;
 			children = (
-				E91192631D335EDD00D0C131 /* CLLoadScreenViewController.h */,
-				E91192641D335EDD00D0C131 /* CLLoadScreenViewController.m */,
 				E9E0EDD21DCA148F0083F16B /* IBESLoadingViewController.h */,
 				E9E0EDD31DCA148F0083F16B /* IBESLoadingViewController.m */,
 			);
@@ -567,9 +567,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9AAC5271DCCB92D00E0326C /* Main.storyboard in Resources */,
 				E9387F8F1D2927FC00DACE07 /* LaunchScreen.storyboard in Resources */,
 				E9387F8C1D2927FC00DACE07 /* Assets.xcassets in Resources */,
-				E9387F8A1D2927FC00DACE07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,10 +732,10 @@
 				E9E0EDD81DCA15120083F16B /* IBESMenuViewController.m in Sources */,
 				E9387F811D2927FC00DACE07 /* main.m in Sources */,
 				E9BAD06B1DAE3DC10010820E /* IBESInfoPageRequest.m in Sources */,
-				E91192651D335EDE00D0C131 /* CLLoadScreenViewController.m in Sources */,
 				E94B5BBE1DAE2912007BF387 /* IBESInfoPageListJSONModel.m in Sources */,
 				E94975641D38D1C100522DFB /* CLLibraryAPI.m in Sources */,
 				E903C0341DB8C6A900F6C98F /* IBESBlockOperationWithProgress.m in Sources */,
+				E991C99D1DD483A80003A824 /* IBESViewController.m in Sources */,
 				E9BAD06E1DAE3EF00010820E /* IBESInfoPageService.m in Sources */,
 				E90B81AA1D9BB9D300EAAF75 /* IBESBannersRequest.m in Sources */,
 				E9BAD08F1DAFAB0D0010820E /* IBESTaxonsParser.m in Sources */,
@@ -785,20 +785,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E9387F881D2927FC00DACE07 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9387F891D2927FC00DACE07 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E9387F8D1D2927FC00DACE07 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E9387F8E1D2927FC00DACE07 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E9AAC5251DCCB92D00E0326C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9AAC5261DCCB92D00E0326C /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

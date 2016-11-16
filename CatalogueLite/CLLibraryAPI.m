@@ -37,109 +37,6 @@
 
 @implementation CLLibraryAPI
 
-#pragma mark - Get some menu content
-
-- (void)getMenuContent:(void (^)(void))success failureBlock:(void (^)(void))failure
-{
-    NSMutableArray<void (^)(void)> *tasksArray = [NSMutableArray new];
-    
-    [tasksArray addObject:^{
-        [self bannersArrayWithSuccessBlock:^(NSArray *array)
-        {
-            [[self operation] advanceProgress];
-            
-            if ( [[self operation] isCompleted] )
-            {
-                if (success)
-                {
-                    success();
-                }
-            }
-        } failureBlock:^(NSError *error)
-        {
-            [[self operation] cancelOperation];
-            
-            if (failure)
-            {
-                failure();
-            }
-        }];
-    }];
-    
-    [tasksArray addObject:^{
-        [self infoPagesArrayWithSuccessBlock:^(NSArray *array)
-         {
-             [[self operation] advanceProgress];
-             
-             if ( [[self operation] isCompleted] )
-             {
-                 if (success)
-                 {
-                     success();
-                 }
-             }
-         } failureBlock:^(NSError *error)
-         {
-             [[self operation] cancelOperation];
-             
-             if (failure)
-             {
-                 failure();
-             }
-         }];
-    }];
-    
-    [tasksArray addObject:^{
-        [self taxonsArrayWithSuccessBlock:^(NSArray *array)
-         {
-             [[self operation] advanceProgress];
-             
-             if ( [[self operation] isCompleted] )
-             {
-                 if (success)
-                 {
-                     success();
-                 }
-             }
-         } failureBlock:^(NSError *error)
-         {
-             [[self operation] cancelOperation];
-             
-             if (failure)
-             {
-                 failure();
-             }
-         }];
-    }];
-    
-    [tasksArray addObject:^{
-        [self baseInfoArrayWithSuccessBlock:^(NSArray *array)
-         {
-             [[self operation] advanceProgress];
-             
-             if ( [[self operation] isCompleted] )
-             {
-                 if (success)
-                 {
-                     success();
-                 }
-             }
-         } failureBlock:^(NSError *error)
-         {
-             [[self operation] cancelOperation];
-             
-             if (failure)
-             {
-                 failure();
-             }
-         }];
-    }];
-    
-    [[self operation] addExecutionBlocksFromArray:tasksArray];
-    
-    [[self operation] executeOperation];
-}
-
 #pragma Mark - Class public methods
 
 - (void)bannersArrayWithSuccessBlock:(IBESAPISuccess)success failureBlock:(IBESAPIFailure)failure
@@ -236,6 +133,126 @@
              }
          } failureBlock:failure];
     }
+}
+
+- (void)getMenuContent:(void (^)(void))success failureBlock:(void (^)(void))failure
+{
+    [self.operation addExecutionBlocksFromArray:[self downloadTasks:success failureBlock:failure]];
+    
+    [self.operation executeOperation];
+}
+
+#pragma Mark - Helper method
+
+- (NSArray<void (^)(void)> *)downloadTasks:(void (^)(void))success failureBlock:(void (^)(void))failure
+{
+    NSMutableArray<void (^)(void)> *tasksArray = [NSMutableArray new];
+    
+    [tasksArray addObject:^{
+        [self bannersArrayWithSuccessBlock:
+         ^(NSArray *banners)
+         {
+             [self.operation advanceProgress];
+             
+             if ( [self.operation isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         }
+                              failureBlock:
+         ^(NSError *error)
+         {
+             [self.operation cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self infoPagesArrayWithSuccessBlock:
+         ^(NSArray *infoPages)
+         {
+             [self.operation advanceProgress];
+             
+             if ( [self.operation isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         }
+                                failureBlock:
+         ^(NSError *error)
+         {
+             [self.operation cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self taxonsArrayWithSuccessBlock:
+         ^(NSArray *taxons)
+         {
+             [self.operation advanceProgress];
+             
+             if ( [self.operation isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         }
+                             failureBlock:
+         ^(NSError *error)
+         {
+             [self.operation cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    [tasksArray addObject:^{
+        [self baseInfoArrayWithSuccessBlock:
+         ^(NSArray *baseInfo)
+         {
+             [self.operation advanceProgress];
+             
+             if ( [self.operation isCompleted] )
+             {
+                 if (success)
+                 {
+                     success();
+                 }
+             }
+         }
+                               failureBlock:
+         ^(NSError *error)
+         {
+             [self.operation cancelOperation];
+             
+             if (failure)
+             {
+                 failure();
+             }
+         }];
+    }];
+    
+    return [tasksArray copy];
 }
 
 #pragma Mark - Singleton initialisation

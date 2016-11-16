@@ -22,6 +22,6 @@
 @property (assign, nonatomic) NSString<Optional> *linkID;
 @property (assign, nonatomic) NSString<Optional> *linkType;
 @property (nonatomic) NSString *title;
-@property (nonatomic) NSString *url;
+@property (nonatomic) NSURL *url;
 
 @end
